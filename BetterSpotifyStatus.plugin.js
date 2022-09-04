@@ -10,10 +10,12 @@
  * 
  */
 
+let interval;
+
 module.exports = class {
 	// called when the plugin is activated (including after reloads)
 	start() {
-		setInterval(function () {
+		interval = setInterval(function () {
 			getSong((data) => {
 				// checks if there is no song
 				if (!data.name) {
@@ -28,7 +30,7 @@ module.exports = class {
 
 	// called when the plugin is deactivated
 	stop() {
-
+		clearInterval(interval);
 	}
 };
 
